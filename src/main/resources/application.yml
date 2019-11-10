@@ -1,0 +1,29 @@
+server:
+  servlet:
+    context-path: /htec
+
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false;INIT=CREATE SCHEMA IF NOT EXISTS cl\;
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+    hikari:
+      maximumPoolSize: 10
+      minimumIdle: 5
+      maxLifetime: 2000000
+      connectionTimeout: 30000
+      idleTimeout: 30000
+      connection-test-query: SELECT 1
+      poolName: TaskH2HikariPool
+  jpa:
+    open-in-view: false
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      org.hibernate.flushMode: COMMIT
+      hibernate:
+        show_sql: false
+        format_sql: false
